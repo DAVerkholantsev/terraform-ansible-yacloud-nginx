@@ -1,0 +1,14 @@
+---
+- name: install nginx ubuntu
+  hosts: ubuntu-servers
+  become:
+    true
+  become_method:
+    sudo
+  vars:
+    app_root: https://github.com/gabrielecirulli/2048
+    dest_dir: /var/lib/2048
+    nginx_user: www-data
+  roles:
+   - nginx
+...

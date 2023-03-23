@@ -1,0 +1,43 @@
+- name: Install Nginx
+  package:
+   name: nginx
+   state: present
+  vars:
+   app_root: https://github.com/gabrielecirulli/2048
+   dest_dir: /var/lib/2048
+   nginx_user: www-data
+
+- name: Clone a PUBLIC repo
+  git:
+    repo: "{{ app_root }}"
+    dest: "{{ dest_dir }}"
+    clone: yes
+    update: yes
+
+- name: Replace nginx.conf
+  template:
+    src=templates/nginx.conf
+    dest=/etc/nginx/nginx.conf
+
+- name: replace 2048
+  template:
+    src=templates/2048
+    dest=/etc/nginx/sites-available/2048
+
+- name: Enable new site
+  file:
+    src: /etc/nginx/sites-available/2048
+    dest: /etc/nginx/sites-enabled/2048
+    state: link
+
+- name: link 2048 www
+  file:
+    src: "{{ dest_dir }}"
+    dest: /var/www/html/2048
+    state: link
+  notify: Restart Nginx
+
+- name: Delete difault site
+  file:
+    state: absent
+    path: /etc/nginx/sites-enabled/default

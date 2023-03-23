@@ -12,11 +12,12 @@ Ansible deploy web-server:
 * copy config file
 
 for example i used https://github.com/gabrielecirulli/2048
+
 To start:
- create account https://console.cloud.yandex.ru/
- create catalog
- get token https://oauth.yandex.ru/authorize?response_type=token&client_id=1a6990aa636648e9b2ef855fa7bec2fb
- set vars in ~/providers.tf to correct creation you YandexCloud resources run:
+ * create account https://console.cloud.yandex.ru/
+ * create catalog
+ * get token https://oauth.yandex.ru/authorize?response_type=token&client_id=1a6990aa636648e9b2ef855fa7bec2fb
+ * set vars in ~/providers.tf to correct creation you YandexCloud resources run:
  
  ~/terraform:
  * terraform init

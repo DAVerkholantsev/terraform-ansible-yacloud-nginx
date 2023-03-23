@@ -17,9 +17,11 @@ To start:
  create catalog
  get token https://oauth.yandex.ru/authorize?response_type=token&client_id=1a6990aa636648e9b2ef855fa7bec2fb
  set vars in ~/providers.tf to correct creation you YandexCloud resources run:
+ 
  ~/terraform:
  * terraform init
  * terraform apply
- ~/ansible^
+ 
+ ~/ansible:
  * create host
  * ansible-playbook main.yml
